@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老哥网 · 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f6f7fa;
+            color: #1e1f2c;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0d1b2a 0%, #1b2d45 100%);
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+            color: #e9edf2;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 215, 100, 0.06), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 span {
+            color: #f8c660;
+            font-weight: 400;
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            border: 1px solid rgba(248, 198, 96, 0.3);
+            color: #f8c660;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            background: rgba(248, 198, 96, 0.05);
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 1.5rem 0 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem 1.5rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #edeff2;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #0d1b2a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 i {
+            font-style: normal;
+            background: #f1f3f6;
+            border-radius: 40px;
+            padding: 0.1rem 0.6rem;
+            font-size: 0.85rem;
+            color: #4f5b6b;
+            font-weight: 400;
+        }
+
+        .card p {
+            color: #3b4353;
+            font-size: 0.98rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card .meta {
+            margin-top: 0.8rem;
+            font-size: 0.87rem;
+            color: #6b768a;
+            border-top: 1px solid #f0f2f5;
+            padding-top: 0.8rem;
+        }
+
+        .card .meta a {
+            color: #b8862c;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dotted transparent;
+        }
+
+        .card .meta a:hover {
+            border-bottom-color: #b8862c;
+        }
+
+        /* 自然链接段落 */
+        .intro-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem 2.2rem;
+            margin: 1.5rem 0 2.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            border: 1px solid #edeff2;
+        }
+
+        .intro-section p {
+            margin-bottom: 1.1rem;
+            color: #2b3245;
+            font-size: 1.02rem;
+        }
+
+        .intro-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-section a {
+            color: #b8862c;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px solid rgba(184, 134, 44, 0.25);
+        }
+
+        .intro-section a:hover {
+            border-bottom-color: #b8862c;
+            color: #8f6f2a;
+        }
+
+        .highlight {
+            background: #fcf8f0;
+            padding: 0.15rem 0.4rem;
+            border-radius: 6px;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 1.8rem 1rem 3rem;
+            }
+
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .intro-section {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+
+        /* 小提示 / faq 摘要区 */
+        .note-box {
+            background: #f1f4fa;
+            border-radius: 16px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0 2rem;
+            border-left: 4px solid #b8862c;
+        }
+
+        .note-box h4 {
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+            color: #0d1b2a;
+        }
+
+        .note-box p {
+            color: #364153;
+            font-size: 0.96rem;
+        }
+
+        .note-box a {
+            color: #b8862c;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(184, 134, 44, 0.4);
+        }
+
+        .note-box a:hover {
+            border-bottom-style: solid;
+        }
+
+        .footer-note {
+            margin-top: 3.5rem;
+            text-align: center;
+            color: #7f8a9b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e4e6ec;
+            padding-top: 2rem;
+        }
+
+        .footer-note a {
+            color: #b8862c;
+            text-decoration: none;
+            font-weight: 450;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e6e8ee;
+            margin: 0.8rem 0 1.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <h1>· <span>老哥网</span> ·</h1>
+    <p>一个保持克制的信息页面，当你需要一个稳定的入口来了解这个网站，这里不会让你绕路。</p>
+    <div class="badge">稳定入口 · 页面说明</div>
+</header>
+
+<main class="container">
+
+    <!-- 主视觉卡片区 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>🧭 用途卡片 <i>概况</i></h3>
+            <p>如果你之前曾访问过 <a href="https://china-laogeweb.com" style="color:#b8862c;text-decoration:none;font-weight:450;">老哥网</a>，应该知道它更偏向于信息整合与导航。这个页面相当于一个安静的入口说明——你不需要在多个标签页里翻找，这里直接整理了要点。</p>
+            <div class="meta">适合第一次或再次确认方向的人</div>
+        </div>
+
+        <div class="card">
+            <h3>👥 适合人群</h3>
+            <p>习惯先看概览再深入的人、需要快速确认网站定位的访客、或者只是路过但想留个印象的用户。没有复杂的门槛，打开就能读。</p>
+            <div class="meta">不预设身份，只提供内容</div>
+        </div>
+
+        <div class="card">
+            <h3>📎 自然链接段落</h3>
+            <p>页面中会出现指向 <a href="https://china-laogeweb.com" style="color:#b8862c;text-decoration:none;font-weight:450;">老哥网</a> 的链接，它们被放在句子里，而不是单独的按钮。就像你正在读的这句话一样，自然而然。</p>
+            <div class="meta">不打扰，但有用</div>
+        </div>
+    </div>
+
+    <!-- 介绍性段落 + 嵌入链接 -->
+    <section class="intro-section">
+        <p>这个页面是为 <a href="https://china-laogeweb.com">老哥网</a> 制作的介绍页，也可以看作一个静态的“关于”卡片。内容围绕稳定入口和页面说明展开——没有轮播图、不会自动播放视频，甚至没有复杂的菜单。你看到的就是全部。</p>
+        <p>如果你之前通过其他渠道听说过这个网站，但不太确定它是否值得花时间，这里的卡片和段落或许能帮你做一个简单的判断。<span class="highlight">“稳定入口”</span>的意思是：这个页面不会频繁变动，链接直接指向主站，没有中间页或跳转。</p>
+        <p>当然，所有指向 <a href="https://china-laogeweb.com">老哥网</a> 的链接都经过了确认，你可以放心点开。但如果你更想先读完这一页，也没问题——它本来就不长。</p>
+    </section>
+
+    <!-- 2列：特点 + 场景 -->
+    <div class="grid-2col">
+        <div>
+            <h3 style="font-weight:500; font-size:1.2rem; margin-bottom:0.5rem; color:#0d1b2a;">⚙️ 几个特点</h3>
+            <ul style="list-style: none; padding: 0; color: #2f384a;">
+                <li style="padding: 0.35rem 0;">— 深色头图与浅色正文区分明确</li>
+                <li style="padding: 0.35rem 0;">— 卡片式信息，适合快速扫读</li>
+                <li style="padding: 0.35rem 0;">— 没有诱导点击，只有自然链接</li>
+                <li style="padding: 0.35rem 0;">— 响应式，手机阅读也舒服</li>
+            </ul>
+        </div>
+        <div>
+            <h3 style="font-weight:500; font-size:1.2rem; margin-bottom:0.5rem; color:#0d1b2a;">📌 常见场景</h3>
+            <ul style="list-style: none; padding: 0; color: #2f384a;">
+                <li style="padding: 0.35rem 0;">— 想把 <a href="https://china-laogeweb.com" style="color:#b8862c;text-decoration:none;font-weight:450;">老哥网</a> 存为浏览器书签前先看一眼</li>
+                <li style="padding: 0.35rem 0;">— 在社交媒体上分享一个干净的介绍页</li>
+                <li style="padding: 0.35rem 0;">— 快速确认网站是否和你之前记忆中的一致</li>
+                <li style="padding: 0.35rem 0;">— 作为导航页，后续再决定是否深入浏览主站</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 / 提示 -->
+    <div class="note-box">
+        <h4>❓ 常见小问题（摘要）</h4>
+        <p><strong>“这个页面和主站有什么区别？”</strong> 这里是介绍和说明，主站 <a href="https://china-laogeweb.com">老哥网</a> 包含更完整的内容。你可以把本页当作一个安静的过渡页。<br>
+        <strong>“链接会过期吗？”</strong> 我们尽量保持稳定，但如果你发现链接失效，可以稍后再试。目前所有链接都指向有效地址。<br>
+        <strong>“为什么没有花哨的动画？”</strong> 因为目的不是炫技，而是让信息更容易被阅读。</p>
+    </div>
+
+    <!-- 结尾自然段落，再次嵌入链接（但不重复相同句式） -->
+    <p style="margin: 2rem 0 0.2rem; color: #364153; font-size: 0.98rem;">
+        如果你之前收藏过 <a href="https://china-laogeweb.com">老哥网</a> 但忘了具体内容，这个页面可以作为一个轻量的提醒。如果你是从搜索或推荐过来的，希望这些卡片和段落能帮你节省一点判断的时间。
+    </p>
+    <p style="color: #5a657a; font-size: 0.94rem; margin-top: 0.6rem;">
+        最后，如果你觉得这个介绍页有用，可以直接把链接分享给朋友——前提是他也需要一个稳定入口。
+    </p>
+
+    <div class="footer-note">
+        <p>页面内容依照 <a href="https://china-laogeweb.com">老哥网</a> 的信息基调撰写 · 简洁说明 不冗余</p>
+    </div>
+
+</main>
+
+</body>
+</html>
